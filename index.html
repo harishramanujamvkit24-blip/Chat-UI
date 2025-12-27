@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DM UI – Expanded</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+.msg-in { animation: inLeft .4s ease; }
+.msg-out { animation: inRight .4s ease; }
+
+@keyframes inLeft {
+  from { opacity:0; transform:translateX(-20px); }
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes inRight {
+  from { opacity:0; transform:translateX(20px); }
+  to { opacity:1; transform:translateX(0); }
+}
+
+.chat-hover:hover { transform: translateY(-2px); }
+
+.press:active { transform: scale(.92); }
+
+.typing span {
+  animation: blink 1.4s infinite both;
+}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+
+@keyframes blink {
+  0%{opacity:.2}
+  20%{opacity:1}
+  100%{opacity:.2}
+}
+</style>
+</head>
+
+<body class="bg-gradient-to-br from-purple-100 via-pink-100 to-purple-200 h-screen overflow-hidden">
+
+<div class="flex h-full">
+
+<!-- CHAT LIST -->
+<aside class="w-80 bg-white/85 backdrop-blur-xl border-r flex flex-col">
+
+  <div class="p-6 border-b">
+    <h2 class="text-xl font-bold text-purple-700">Messages</h2>
+    <p class="text-sm text-gray-500">Harish Ramanujam</p>
+  </div>
+
+  <div class="p-4">
+    <input placeholder="Search"
+      class="w-full px-4 py-3 rounded-xl bg-gray-100 focus:ring-2 focus:ring-purple-400 outline-none">
+  </div>
+
+  <!-- CHAT ITEMS -->
+  <div class="flex-1 overflow-y-auto px-2 space-y-2">
+
+    <!-- ACTIVE -->
+    <div class="flex gap-4 p-4 rounded-xl bg-purple-50 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=1" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Anish</p>
+        <p class="text-sm text-purple-500">Typing…</p>
+      </div>
+      <span class="text-xs text-gray-400">now</span>
+    </div>
+
+    <!-- UNREAD -->
+    <div class="flex gap-4 p-4 rounded-xl bg-pink-50 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=2" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Divith</p>
+        <p class="text-sm font-semibold">Bro that UI 😍</p>
+      </div>
+      <span class="w-3 h-3 bg-pink-500 rounded-full"></span>
+    </div>
+
+    <div class="flex gap-4 p-4 rounded-xl hover:bg-gray-100 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=3" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Kabil</p>
+        <p class="text-sm text-gray-500">Send the repo</p>
+      </div>
+      <span class="text-xs text-gray-400">5m</span>
+    </div>
+
+    <div class="flex gap-4 p-4 rounded-xl hover:bg-gray-100 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=4" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Arjun</p>
+        <p class="text-sm text-gray-500">Meet at 7?</p>
+      </div>
+      <span class="text-xs text-gray-400">10m</span>
+    </div>
+
+    <div class="flex gap-4 p-4 rounded-xl hover:bg-gray-100 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=5" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Sanjay</p>
+        <p class="text-sm text-gray-500">Nice animations</p>
+      </div>
+      <span class="text-xs text-gray-400">1h</span>
+    </div>
+
+    <div class="flex gap-4 p-4 rounded-xl hover:bg-gray-100 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=6" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Ritika</p>
+        <p class="text-sm text-gray-500">Can you review?</p>
+      </div>
+      <span class="text-xs text-gray-400">2h</span>
+    </div>
+
+    <div class="flex gap-4 p-4 rounded-xl hover:bg-gray-100 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=7" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">Dev Team</p>
+        <p class="text-sm text-gray-500">PR merged ✅</p>
+      </div>
+      <span class="text-xs text-gray-400">Yesterday</span>
+    </div>
+
+    <div class="flex gap-4 p-4 rounded-xl hover:bg-gray-100 chat-hover transition cursor-pointer">
+      <img src="https://i.pravatar.cc/40?img=8" class="w-12 h-12 rounded-full">
+      <div class="flex-1">
+        <p class="font-semibold">UI Squad</p>
+        <p class="text-sm text-gray-500">🔥🔥🔥</p>
+      </div>
+      <span class="text-xs text-gray-400">Mon</span>
+    </div>
+
+  </div>
+</aside>
+
+<!-- CHAT WINDOW -->
+<main class="flex-1 flex flex-col bg-white/60 backdrop-blur-xl">
+
+<header class="h-20 px-6 border-b flex items-center justify-between">
+  <div class="flex items-center gap-4">
+    <img src="https://i.pravatar.cc/40?img=1" class="w-12 h-12 rounded-full">
+    <div>
+      <p class="font-semibold">Anish</p>
+      <p class="text-sm text-green-500">Active now</p>
+    </div>
+  </div>
+  <div class="flex gap-4 text-xl">📞 🎥</div>
+</header>
+
+<div class="flex-1 overflow-y-auto px-6 py-6 space-y-6">
+
+  <div class="flex gap-3 msg-in">
+    <img src="https://i.pravatar.cc/32?img=1" class="w-8 h-8 rounded-full">
+    <div class="bg-white px-4 py-3 rounded-2xl shadow max-w-md">
+      This feels like real Instagram DMs
+    </div>
+  </div>
+
+  <div class="flex justify-end msg-out">
+    <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-2xl max-w-md">
+      That was the goal 😎
+    </div>
+  </div>
+
+  <div class="flex gap-3">
+    <img src="https://i.pravatar.cc/32?img=1" class="w-8 h-8 rounded-full">
+    <div class="bg-white px-4 py-3 rounded-2xl typing flex gap-1">
+      <span>•</span><span>•</span><span>•</span>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-5 border-t bg-white/80">
+  <div class="flex items-center gap-4">
+    <button class="text-2xl press hover:scale-110 transition">😊</button>
+    <input placeholder="Message..."
+      class="flex-1 px-5 py-4 rounded-full bg-gray-100 focus:ring-2 focus:ring-purple-400 outline-none">
+    <button class="press bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:opacity-90 transition">
+      Send
+    </button>
+  </div>
+</footer>
+
+</main>
+</div>
+
+</body>
+</html>
